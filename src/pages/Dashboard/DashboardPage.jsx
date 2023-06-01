@@ -21,7 +21,7 @@ export const DashboardPage = () => {
         setOrder(data);
       }
       catch (e) {
-        toast.error(e.message);
+        toast.error(e.message || "Error");
       }
 
     }

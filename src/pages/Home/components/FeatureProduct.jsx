@@ -16,7 +16,7 @@ export const FeatureProduct = () => {
         setProduct(data);
       }
       catch (error) {
-        toast.error(error.message);
+        toast.error(error.message || "Error");
       }
 
     }

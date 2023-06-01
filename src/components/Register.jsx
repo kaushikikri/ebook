@@ -22,7 +22,7 @@ export const Register = () => {
             data.accessToken ? navigate("/login") : toast.error(data);
         }
         catch (error) {
-            toast.error(error.message);
+            toast.error(error.message || "Error");
         }
 
         event.target.name.value = "";

@@ -24,11 +24,28 @@ export const Login = () => {
             data.accessToken ? navigate("/products") : toast.error(data);
         }
         catch (error) {
-            toast.error(error.message);
+            toast.error(error.message || "Error");
         }
 
         event.target.email.value = "";
         event.target.password.value = "";
+    }
+
+    async function handleGuest() {
+        email.current.value = process.env.REACT_APP_GUEST_EMAIL;
+        password.current.value = process.env.REACT_APP_GUEST_PASSWORD;
+
+        try {
+            const authData = {
+                email: email.current.value,
+                password: password.current.value,
+            }
+            const data = await login(authData);
+            data.accessToken ? navigate("/products") : toast.error(data);
+        }
+        catch (error) {
+            toast.error(error.message || "Error");
+        }
     }
 
     return (
@@ -46,8 +63,8 @@ export const Login = () => {
                 <div className="mb-4">
                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  p-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log In</button>
                 </div>
-                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  p-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login As Guest</button>
             </form>
+            <button onClick={handleGuest} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  p-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login As Guest</button>
         </main>
     )
 }

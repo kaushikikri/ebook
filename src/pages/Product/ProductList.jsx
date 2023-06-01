@@ -26,7 +26,7 @@ export const ProductList = () => {
         initialize(data);
       }
       catch (err) {
-        toast.error(err.message);
+        toast.error(err.message || "Error");
       }
 
     }

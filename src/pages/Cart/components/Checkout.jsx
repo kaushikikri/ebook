@@ -21,7 +21,7 @@ export const Checkout = ({ setCheck }) => {
         setUser(data);
       }
       catch (e) {
-        toast.error(e.message);
+        toast.error(e.message || "error");
       }
 
     }
@@ -40,7 +40,7 @@ export const Checkout = ({ setCheck }) => {
 
     }
     catch (error) {
-      toast.error(error.message);
+      toast.error(error.message || "Error");
       navigate("/order-summary", { state: { status: false } });
     }
 

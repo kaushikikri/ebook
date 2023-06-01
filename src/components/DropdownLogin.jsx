@@ -21,7 +21,7 @@ export const DropdownLogin = () => {
                 data.email ? setUser(data.email) : handleLogout();
             }
             catch (err) {
-                toast.error(err.message);
+                toast.error(err.message || "Error");
             }
 
         }
